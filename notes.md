@@ -104,3 +104,46 @@ Through setter injection using <property> tag, we can provide values like String
 `
 
 setter injection is a dependency injection in which the call first goes to no argument constructor and then to the setter method. it does not create any new bean instance. 
+
+## constructor injection with collection
+The following collections can be used inside the `<constructor-arg>` tag:
+* list
+* set
+* map
+## Bean lifecycle in Spring
+
+beans lifecyle is managed by the spring container. 
+
+![alt text](<Bean-Life-Cycle-Process-flow3.png>)
+
+three ways to implement the life cycle of a bean:
+* xml:  In this approach, in order to avail custom init() and destroy() methods for a bean we have to register these two methods inside the Spring XML configuration file while defining a bean.
+`
+<beans>
+    <bean id="hw" class="beans.HelloWorld"
+            init-method="init" destroy-method="destroy"/>
+     
+</beans>
+`
+* programmatic
+`java
+package beans;
+ 
+import org.springframework
+    .beans.factory.DisposableBean;
+ 
+import org.springframework
+    .beans.factory.InitializingBean;
+ 
+// HelloWorld class which implements the
+// interfaces
+public class HelloWorld
+    implements InitializingBean,
+ DisposableBean {
+`
+* annotation
+
+Note: To invoke the destroy() method we have to call the close() method of ConfigurableApplicationContext.
+
+aiuda: no me estan funcionando @pre y @post
+

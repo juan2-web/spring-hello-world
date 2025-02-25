@@ -19,9 +19,15 @@ public class Main {
         Student3 stud3 = (Student3) context.getBean("student3");
         //System.out.println(stud3);
 
+        // injection with setters
         Company c = (Company) context.getBean("company");
         System.out.println("company display: ");
         c.display();
+
+        // injection with constructor, using map
+        Company c2 = (Company) context.getBean("company2");
+        System.out.println("company with constructor injector:");
+        c2.display();
 
     }
 }

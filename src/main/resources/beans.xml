@@ -78,5 +78,19 @@
     </property>
   </bean>
 
+  <bean id="company2" class="com.example.demo.domain.Company">
+    <constructor-arg name="employees" >
+      <map>   
+      <entry key-ref="employee1" value-ref="address1"></entry>   
+      </map>
+    </constructor-arg>
+  </bean>
+
+  <bean id="hw" class="com.example.demo.domain.HelloWorld" init-method="init" destroy-method="destroy">
+    
+  </bean>
+
+  
+
  
 </beans>
