@@ -10,5 +10,73 @@
     <constructor-arg name="name" value="Tina" />
     <constructor-arg name="age"  value="21"/>
   </bean>
+
+  
+<!-- primer acercamiento -->
+  <!--  <bean id="student2" class="com.example.demo.domain.Student2">
+    <constructor-arg name="id" value="101" />
+    <constructor-arg name="mathCheat">
+      <bean class="com.example.demo.domain.MathCheat"></bean>
+    </constructor-arg>
+  </bean> -->
+
+  <!-- mejorado:  -->
+  <bean id="mathCheatObject" class="com.example.demo.domain.MathCheat"></bean>
+  <bean id="student2" class="com.example.demo.domain.Student2">
+         <constructor-arg name="id" value="101"/>
+         <constructor-arg name="mathCheat" ref="mathCheatObject"/>
+    </bean>
+  <bean id="info" class="com.example.demo.domain.InfoBean">
+    <property name="name" value="Juan" />
+    <property name="msg" value="Welcome to GeeksforGeeks!!" />
+    <property name="frameworks">
+      <map>
+        <entry key="Struts"
+                    value="Struts is an open source framework used to develop Java MVC based web applications."></entry> 
+                <entry key="Spring"
+                    value="Spring is an application framework used to develop Java Enterprise applications 
+                           and designed on concept called Dependency injection."></entry> 
+                <entry key="Hibernate"
+                    value="Hibernate is an object-relational mapping (ORM) framework that works with relational 
+                           databases to manage the data."></entry> 
+      </map>
+    </property>
+  </bean>
+
+  <bean id="student3" class="com.example.demo.domain.Student3">
+    <property name="studentName">
+      <value>John</value>
+    </property>
+
+    <property name="studentCourse">
+      <value>Spring framework</value>
+    </property>
+  </bean>
+
+  <bean id="employee1" class="com.example.demo.domain.Employee">
+    <constructor-arg name="name" value="sahil"/>
+
+    <constructor-arg name="employeeID" value="101" />
+
+    <constructor-arg name="department" value="game dev" />
+  </bean>
+
+  <bean id="address1" class="com.example.demo.domain.Address">
+    <constructor-arg name="houseNo" value="2" />
+
+    <constructor-arg name="pincode" value="110111" />  
+    <constructor-arg name="state" value="Bihar" />  
+    <constructor-arg name="country" value="India" />
+    
+  </bean>
+
+  <bean id="company" class="com.example.demo.domain.Company">
+    <property name="employees" >
+      <map>   
+      <entry key-ref="employee1" value-ref="address1"></entry>   
+      </map>
+    </property>
+  </bean>
+
  
 </beans>

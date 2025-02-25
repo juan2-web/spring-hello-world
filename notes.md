@@ -57,3 +57,50 @@ Use constructor injection for mandatory dependencies and setter injection for op
 </bean>
 `
 name attribute correlates with the constructor argument name in vehicle class. ref attribute points to the bean reference (in the bean config file) which is used for injecting
+
+# Difference between Inversion of Control and Dependency Injection
+## Spring IoC (Inversion of Control)
+is the core spring framework. it handles everything about objects. 
+* Creating Object for us,
+* Managing our objects,
+* Helping our application to be configurable,
+* Managing dependencies
+
+Since the Controlling of Java objects and their lifecycle is not done by the developers, hence the name Inversion Of Control.
+The idea is to keep java classes independent of each other.
+
+## Spring Dependency Injection
+is the main functionality provided by Sprin IoC. 
+
+### 1) Constructor-based dependency injection
+
+`
+<bean id="beanId" class="BeanClass"> 
+  <constructor-arg type="String" value="test"/> 
+  <constructor-arg type="int" value="1002"/> 
+</bean>
+`
+### 2) Setter-based dependency injection
+
+`
+<bean id="beanId" class="BeanClass"> 
+  <property name="secondBean" ref="SecondBean"/> 
+  <property name="message" value="This is message."/> 
+</bean>
+`
+
+Through setter injection using <property> tag, we can provide values like Strings, Primitives, Collections, etc. based on our requirement. In this example, we will see setter injection using Map. While we are using the map, we need to use <map> and <entry> tags to set the values to it.
+
+`
+<bean id="beanId" class="BeanClass"> 
+		<property name="name" value="geeks" /> 
+		<property name="name2"> 
+			<map> 
+				<entry key="key1" value="value1"/> 
+				<entry key ="key2" value-ref="DataSource"/> 
+			</map> 
+		</property> 
+</bean>
+`
+
+setter injection is a dependency injection in which the call first goes to no argument constructor and then to the setter method. it does not create any new bean instance. 
